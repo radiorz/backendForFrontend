@@ -1,0 +1,15 @@
+{
+  "name": "bff-demo",
+  "version": "1.0.0",
+  "description": "比如我创建一个后端有很多接口。 在前端我不需要再使用axios 做一番操作 而是直接后端提供个库或者方法让我可以调用后端所有的接口。",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
