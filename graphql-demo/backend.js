@@ -27,7 +27,41 @@ const schema = buildSchema(`
 
 // 定义GraphQL Resolver
 const root = {
-  users: () => users,
+  users: ( { first, after }) => {
+    // 从数据库或其他数据源获取原始的用户列表
+    const allUsers = getAllUsers();
+
+    // 根据游标进行游标分页
+    let startIndex = 0;
+    if (after) {
+      const cursorIndex = allUsers.findIndex((user) => user.id === after);
+      startIndex = cursorIndex + 1;
+    }
+
+    // 根据分页参数进行筛选和分页操作
+    const slicedUsers = users.slice(startIndex, startIndex + first);
+
+    // 构建分页结果
+    const edges = slicedUsers.map((user) => ({
+      node: user,
+      cursor: user.id,
+    }));
+
+    const endCursor =
+      slicedUsers.length > 0 ? slicedUsers[slicedUsers.length - 1].id : null;
+
+    const pageInfo = {
+      hasNextPage: startIndex + first < allUsers.length,
+      hasPreviousPage: startIndex > 0,
+      startCursor: edges.length > 0 ? edges[0].cursor : null,
+      endCursor,
+    };
+
+    return {
+      edges,
+      pageInfo,
+    };
+  },
   user: (args) => users.find((user) => user.id === args.id),
   addUser: (args) => {
     const user = {

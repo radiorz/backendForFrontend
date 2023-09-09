@@ -4,7 +4,8 @@
   "description": "这个其实就是将获取的形式丢给了前端 但是后端需要定制比较麻烦不通用 https://graphql.org/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon backend.js",
+    "client": "node frontend.js"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,8 @@
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
