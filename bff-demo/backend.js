@@ -7,7 +7,7 @@ function startServer() {
   app.use(express.json()); //Used to parse JSON bodies
   console.log(`route,schema`, route, requestSchema);
   app[route.method](route.url, function (req, res) {
-    console.log(`req`, req.body);
+    // TODO 模仿graphql 搞个可以输入responseSchema 的方式，就可以对返回值进行过滤了
     const { body: data } = req;
     const { isValid, errors } = requestCheck(requestSchema, data);
     let result = {};
@@ -19,10 +19,11 @@ function startServer() {
       result = { data: `hello ${data.name}` };
       result = responseBuilder(responseSchema, result);
     }
+    res.setHeader("Content-Type", "application/json");
     res.send(result);
   });
   app.listen(4000, () => {
-    console.log(`isstart`);
+    console.log(`server is start`);
   });
 }
 

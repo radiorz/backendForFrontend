@@ -5,5 +5,5 @@ module.exports = function responseBuilder(schema, data) {
   const stringify = build(schema);
   const result = stringify(data);
   console.log(`data,result`, data, result);
-  return JSON.parse(result);
+  return result;
 };
