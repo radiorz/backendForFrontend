@@ -1,8 +1,18 @@
-const schema = {
+const requestSchema = {
   type: "object",
   properties: {
     name: {
       type: "string",
+    },
+  },
+};
+// graphql 的做法就是将response schema 交给后端处理
+const responseSchema = {
+  type: "object",
+  properties: {
+    data: {
+      type: "string",
+      default: "hello world",
     },
   },
 };
@@ -15,6 +25,7 @@ const route = {
 module.exports = {
   name: "helloByName",
   // 定义
-  schema,
+  requestSchema,
+  responseSchema,
   route,
 };

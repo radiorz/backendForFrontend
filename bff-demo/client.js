@@ -1,6 +1,6 @@
 const apiService = require("./genClient");
 
 (async () => {
-  const a = await apiService.helloByName({ name: "王" });
-  console.log(`a`, a);
+  const result = await apiService.helloByName({ name: "王" });
+  console.log(`result`, result);
 })();

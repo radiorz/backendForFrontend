@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { name, schema, route } = require("./route");
-const checkSchema = require("./checkSchema");
+const checkSchema = require("./requestCheck");
 function genClient() {
   return {
     async [name](data) {

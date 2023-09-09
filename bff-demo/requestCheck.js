@@ -3,6 +3,11 @@ const ajv = new Ajv();
 
 function checkSchema(schema, data) {
   const validate = ajv.compile(schema);
-  validate(data);
+  const isValid = validate(data);
+  if (isValid) {
+    return { isValid };
+  } else {
+    return { isValid, errors: validate.errors };
+  }
 }
 module.exports = checkSchema;

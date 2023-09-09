@@ -4,7 +4,8 @@
   "description": "比如我创建一个后端有很多接口。 在前端我不需要再使用axios 做一番操作 而是直接后端提供个库或者方法让我可以调用后端所有的接口。",
   "main": "backend.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon backend.js",
+    "client": "node client.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,10 @@
   "dependencies": {
     "ajv": "^8.12.0",
     "axios": "^1.5.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "fast-json-stringify": "^5.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
